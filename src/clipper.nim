@@ -39,6 +39,8 @@ proc Difference*(subjects, clips: Paths, fillType: PolyFillType): Paths {.import
   ## This function 'differences' subject paths from clip paths. For more complex clipping operations, you'll likely need to use Clipper64 (or ClipperD) directly.
 proc Xor*(subjects, clips: Paths, fillType: PolyFillType): Paths {.importcpp: "ClipperLib::Xor(@)".}
   ## This function 'XORs' subject paths and clip paths. For more complex clipping operations, you'll likely need to use Clipper64 (or ClipperD) directly.
+proc Orientation*(poly: Path): bool {.importcpp: "ClipperLib::Orientation(@)".}
+  ## Orientation is only important to closed paths. Given that vertices are declared in a specific order, orientation refers to the direction (clockwise or counter-clockwise) that these vertices progress around a closed path.
 
 proc len*(v: Path): csize_t {.importcpp: "size".}
 proc len*(v: Paths): csize_t {.importcpp: "size".}
